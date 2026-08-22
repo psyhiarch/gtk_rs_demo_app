@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
+
+  <menu id="main-menu">
+    <submenu>
+      <attribute name="label" translatable="yes">_File</attribute>
+      <item>
+        <attribute name="label" translatable="yes">_Open</attribute>
+        <attribute name="action">win.open</attribute>
+        <attribute name="target">Open</attribute>
+      </item>
+      <item>
+        <attribute name="label" translatable="yes">_Save</attribute>
+        <attribute name="action">win.save</attribute>
+        <attribute name="target">Save</attribute>
+      </item>
+    </submenu>
+    <item>
+      <attribute name="label" translatable="yes">_Exit</attribute>
+      <attribute name="action">win.open-file</attribute>
+    </item>
+ 
+  </menu>
+
   <template class="DemoApp" parent="AdwApplicationWindow">
     <property name="title">Demo App</property>
     <property name="default-width">800</property>
     <property name="default-height">600</property>
     <property name="content">
       <object class="AdwToolbarView">
+        <!-- <property name="reveal-top-bars">FALSE</property> -->
+        <property name="top-bar-style">ADW_TOOLBAR_RAISED</property>
         <child type="top">
-          <object class="AdwHeaderBar" />
+          <object class="AdwHeaderBar">
+            <child type="end">
+              <object class="GtkMenuButton">
+                <property name="icon-name">open-menu-symbolic</property>
+                <property name="menu-model">main-menu</property>
+                <property name="tooltip-text" translatable="yes">Main Menu</property>
+              </object>
+            </child>
+          </object>
         </child>
+        <property name="content">
+          <object class="AdwPreferencesPage">
+          </object>
+        </property>
       </object>
     </property>
   </template>
