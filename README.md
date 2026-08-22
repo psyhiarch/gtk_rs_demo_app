@@ -5,3 +5,12 @@
 
 Repository template for rapidly bootstrapping **gtk_rs** application.
 
+### Running the Application
+
+Execute the following command to start the application flow:
+
+```bash
+cargo make my_flow
+```
+> [!NOTE]
+> Ensure **cargo-make** is installed on your system.
