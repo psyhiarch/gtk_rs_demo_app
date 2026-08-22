@@ -4,7 +4,7 @@ use crate::window::Window;
 
 mod window;
 
-const APP_ID: &'static str = "org.gtk_rs.GtkDemoApp";
+const APP_ID: &'static str = "org.gtk_rs.DemoApp";
 
 fn main() -> glib::ExitCode {
     // Load resources from installed location

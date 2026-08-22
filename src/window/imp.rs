@@ -12,14 +12,14 @@ use {
 
 // Object holding the state
 #[derive(CompositeTemplate, Default)]
-#[template(resource = "/org/gtk_rs/GtkDemoApp/window.ui")]
+#[template(resource = "/org/gtk_rs/DemoApp/window.ui")]
 pub struct Window {}
 
 // The central trait for subclassing a GObject
 #[glib::object_subclass]
 impl ObjectSubclass for Window {
     // `NAME` needs to match `class` attribute of template
-    const NAME: &'static str = "GtkDemoApp";
+    const NAME: &'static str = "DemoApp";
     type Type = super::Window;
     type ParentType = adw::ApplicationWindow;
 

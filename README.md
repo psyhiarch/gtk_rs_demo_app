@@ -1,1 +1,1 @@
-# gtk_rs_basic
+# gtk_rs_demo_app

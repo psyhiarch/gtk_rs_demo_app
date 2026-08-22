@@ -371,7 +371,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "gtk_demo_app"
+name = "gtk_rs_demo_app"
 version = "0.1.0"
 dependencies = [
  "gtk4",

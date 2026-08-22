@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
-  <template class="GtkDemoApp" parent="AdwApplicationWindow">
-    <property name="title">Gtk Demo App</property>
+  <template class="DemoApp" parent="AdwApplicationWindow">
+    <property name="title">Demo App</property>
     <property name="default-width">800</property>
     <property name="default-height">600</property>
     <property name="content">
