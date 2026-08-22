@@ -1,4 +1,7 @@
 # Demo App for gtk_rs
 
-[![License: MIT](https://shields.io)](https://opensource.org)
-[![Build Status](https://shields.io)]()
+> [!NOTE]
+> This is for testing and educational purposes only.
+
+Repository template for rapidly bootstrapping **gtk_rs** application.
+
