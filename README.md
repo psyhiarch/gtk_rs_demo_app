@@ -5,6 +5,30 @@
 
 Repository template for rapidly bootstrapping **gtk_rs** application.
 
+### Project Structure
+
+```text
+├── .cargo/config.toml
+├── data
+│   ├── resources
+│   │   ├── meson.build
+│   │   ├── resources.gresource.xml
+│   │   └── window.ui
+│   ├── meson.build
+│   └── org.gtk_rs.DemoApp.gschema.xml
+├── src
+│   ├── window
+│   │   ├── imp.rs
+│   │   └── mod.rs
+│   ├── meson.build
+│   └── main.rs
+├── meson.build
+├── meson.options
+├── README.md
+├── Cargo.toml
+└── Makefile.toml
+```
+
 ### Running the Application
 
 Execute the following command to start the application flow:
