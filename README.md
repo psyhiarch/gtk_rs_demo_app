@@ -3,7 +3,7 @@
 > [!NOTE]
 > This project is intended for testing and educational purposes only.
 
-Repository template for rapidly bootstrapping **gtk_rs** application.
+A repository template for rapidly bootstrapping a basic `gtk_rs` application setup.
 
 ### Project Structure
 
