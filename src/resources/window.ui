@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <template class="GtkDemoApp" parent="AdwApplicationWindow">
+    <property name="title">Gtk Demo App</property>
+    <property name="default-width">800</property>
+    <property name="default-height">600</property>
+    <property name="content">
+      <object class="AdwToolbarView">
+        <child type="top">
+          <object class="AdwHeaderBar" />
+        </child>
+      </object>
+    </property>
+  </template>
+</interface>
