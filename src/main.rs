@@ -8,7 +8,7 @@ const APP_ID: &'static str = "org.gtk_rs.DemoApp";
 
 fn main() -> glib::ExitCode {
     // Load resources from installed location
-    let res = gio::Resource::load("build/src/resources/resources.gresource")
+    let res = gio::Resource::load("build/data/resources/resources.gresource")
         .expect("Could not load gresource file");
     gio::resources_register(&res);
 

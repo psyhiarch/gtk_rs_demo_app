@@ -19,11 +19,11 @@
       <attribute name="label" translatable="yes">_Exit</attribute>
       <attribute name="action">win.open-file</attribute>
     </item>
- 
+
   </menu>
 
   <template class="DemoApp" parent="AdwApplicationWindow">
-    <property name="title">Demo App</property>
+    <property name="title" translatable="yes">Demo App</property>
     <property name="default-width">800</property>
     <property name="default-height">600</property>
     <property name="content">
@@ -40,9 +40,32 @@
               </object>
             </child>
           </object>
+
         </child>
         <property name="content">
-          <object class="AdwPreferencesPage">
+          <object class="AdwNavigationSplitView" id="split_view">
+            <property name="sidebar">
+              <object class="AdwNavigationPage">
+                <property name="title" translatable="yes">Sidebar</property>
+                <property name="child">
+                  <object class="AdwBanner">
+                    <property name="revealed">TRUE</property>
+                    <property name="title">Sidebar</property>
+                  </object>
+                </property>
+              </object>
+            </property>
+            <property name="content">
+              <object class="AdwNavigationPage">
+                <property name="title" translatable="yes">Content</property>
+                <property name="child">
+                  <object class="AdwBanner">
+                    <property name="revealed">TRUE</property>
+                    <property name="title">Content</property>
+                  </object>
+                </property>
+              </object>
+            </property>
           </object>
         </property>
       </object>

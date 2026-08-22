@@ -1,6 +1,11 @@
-use gtk::{
-    gio,
-    glib::{self, Object},
+use {
+    crate::APP_ID,
+    adw::subclass::prelude::*,
+    gtk::{
+        gio::{self, Settings},
+        glib::{self, Object},
+        prelude::*,
+    },
 };
 
 mod imp;
@@ -15,5 +20,48 @@ glib::wrapper! {
 impl Window {
     pub fn new(app: &adw::Application) -> Self {
         Object::builder().property("application", app).build()
+    }
+
+    fn setup_settings(&self) {
+        let settings = Settings::new(APP_ID);
+        self.imp()
+            .settings
+            .set(settings)
+            .expect("`settings` should not be set before calling `setup_settings`.");
+    }
+
+    fn settings(&self) -> &Settings {
+        self.imp()
+            .settings
+            .get()
+            .expect("`settings` should be set in `setup_settings`.")
+    }
+
+    pub fn save_window_size(&self) -> Result<(), glib::BoolError> {
+        // Get the size of the window
+        let size = self.default_size();
+
+        // Set the window state in `settings`
+        self.settings().set_int("window-width", size.0)?;
+        self.settings().set_int("window-height", size.1)?;
+        self.settings()
+            .set_boolean("is-maximized", self.is_maximized())?;
+
+        Ok(())
+    }
+
+    fn load_window_size(&self) {
+        // Get the window state from `settings`
+        let width = self.settings().int("window-width");
+        let height = self.settings().int("window-height");
+        let is_maximized = self.settings().boolean("is-maximized");
+
+        // Set the size of the window
+        self.set_default_size(width, height);
+
+        // If the window was maximized when it was closed, maximize it again
+        if is_maximized {
+            self.maximize();
+        }
     }
 }

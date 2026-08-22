@@ -2,18 +2,22 @@ use {
     adw::subclass::application_window::AdwApplicationWindowImpl,
     gtk::{
         CompositeTemplate,
+        gio::Settings,
         glib::{
             self,
             subclass::{InitializingObject, types::ObjectSubclass},
         },
         subclass::prelude::*,
     },
+    std::cell::OnceCell,
 };
 
 // Object holding the state
 #[derive(CompositeTemplate, Default)]
 #[template(resource = "/org/gtk_rs/DemoApp/window.ui")]
-pub struct Window {}
+pub struct Window {
+    pub settings: OnceCell<Settings>,
+}
 
 // The central trait for subclassing a GObject
 #[glib::object_subclass]
@@ -49,6 +53,8 @@ impl ObjectImpl for Window {
         self.parent_constructed();
 
         let obj = self.obj();
+        obj.setup_settings();
+        obj.load_window_size();
     }
 }
 
@@ -56,7 +62,16 @@ impl ObjectImpl for Window {
 impl WidgetImpl for Window {}
 
 // Trait shared by all windows
-impl WindowImpl for Window {}
+impl WindowImpl for Window {
+    fn close_request(&self) -> glib::Propagation {
+        // Save window size
+        self.obj()
+            .save_window_size()
+            .expect("Failed to save window state");
+        // Allow to invoke other event handlers
+        glib::Propagation::Proceed
+    }
+}
 
 // Trait shared by all application windows
 impl ApplicationWindowImpl for Window {}
